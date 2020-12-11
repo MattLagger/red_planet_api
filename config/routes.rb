@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/rovers', to: 'rovers#index'
   get '/auth/github', to: 'authentication#github', format: false
   
   # resources :users
