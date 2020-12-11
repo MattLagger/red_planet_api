@@ -9,6 +9,8 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 gem 'mysql2', '>= 0.4.4'
 # Http requests
 gem 'faraday'
+# Encode JWT tokens
+gem 'jwt'
 # Env creator
 gem 'figaro'
 # Use Puma as the app server
