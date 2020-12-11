@@ -9,7 +9,7 @@ class Authenticator
     user_info_resp = fetch_github_user_info(access_token)
 
     {
-      issuer: ENV['FLASHCARDS_CLIENT_URL'],
+      issuer: ENV['RED_PLANET_CLIENT_URL'],
       login: user_info_resp['login'],
       name: user_info_resp['name'],
       avatar_url: user_info_resp['avatar_url']
@@ -20,8 +20,8 @@ class Authenticator
 
   def fetch_github_access_token(code)
     resp = @connection.post ENV['GITHUB_ACCESS_TOKEN_URL'], {
-      code:          code,
-      client_id:     ENV['CLIENT_ID'],
+      code: code,
+      client_id: ENV['CLIENT_ID'],
       client_secret: ENV['CLIENT_SECRET']
     }
     raise IOError, 'FETCH_ACCESS_TOKEN' unless resp.success?

@@ -2,7 +2,7 @@
 module TokiToki
   def self.encode(sub)
     payload = {
-    iss: ENV['FLASHCARDS_CLIENT_URL'],
+    iss: ENV['RED_PLANET_CLIENT_URL'],
     sub: sub,
     exp: 4.hours.from_now.to_i,
     iat: Time.now.to_i
@@ -12,7 +12,7 @@ module TokiToki
 
   def self.decode(token)
     options = {
-    iss: ENV['FLASHCARDS_CLIENT_URL'],
+    iss: ENV['RED_PLANET_CLIENT_URL'],
     verify_iss: true,
     verify_iat: true,
     leeway: 30,
