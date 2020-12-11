@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::API
   def current_user
-    token = params[:token]
+    return nil unless request.headers[:Authorization].present?
+
+    token = request.headers[:Authorization].split(' ').last
+
     payload = TokiToki.decode(token)
-    @current_user ||= User.find_by_login(payload[0]['sub'])
+    @current_user ||= User.find(payload[0]['sub'])
   end
 
   def logged_in?

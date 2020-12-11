@@ -1,6 +1,6 @@
 
 module TokiToki
-  def self.encode(sub)
+  def self.encode(sub=nil)
     payload = {
     iss: ENV['RED_PLANET_CLIENT_URL'],
     sub: sub,

@@ -1,4 +1,6 @@
 class RoversController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     rovers = NasaRovers.new
     rovers_list = rovers.all_rovers
@@ -17,6 +19,6 @@ class RoversController < ApplicationController
     rovers = NasaRovers.new
     rovers_list = rovers.photos(params)
 
-    render json: rovers_list
+    render json: current_user
   end
 end
