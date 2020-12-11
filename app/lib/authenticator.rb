@@ -10,9 +10,7 @@ class Authenticator
 
     {
       issuer: ENV['RED_PLANET_CLIENT_URL'],
-      login: user_info_resp['login'],
-      name: user_info_resp['name'],
-      avatar_url: user_info_resp['avatar_url']
+      user_data: user_info_resp
     }
   end
 
@@ -30,11 +28,11 @@ class Authenticator
   end
 
   def fetch_github_user_info(access_token)
-    resp = @connection.get ENV['GITHUB_USER_INFO_URL'], {
-      access_token: access_token
-    }
+    resp = @connection.get ENV['GITHUB_USER_INFO_URL'] do |req|
+      req.headers['Authorization'] = "token #{access_token}"
+    end
     raise IOError, 'FETCH_USER_INFO' unless resp.success?
 
-    JSON.parse(resp.body)
+    resp.body
   end
 end
