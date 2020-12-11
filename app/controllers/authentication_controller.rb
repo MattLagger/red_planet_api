@@ -6,8 +6,8 @@ class AuthenticationController < ApplicationController
     token = generate_token(user_info)
 
     redirect_to "#{issuer}?token=#{token}"
-  # rescue StandardError => e
-  #   redirect_to "#{user_info['issuer']}?error=#{e.message}"
+  rescue StandardError => e
+    redirect_to "#{user_info['issuer']}?error=#{e.message}"
   end
 
   private
