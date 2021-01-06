@@ -25,6 +25,7 @@ class NasaRovers
 
   def photos(params)
     url = "#{ENV['NASA_API_URL']}/rovers/#{params[:rover]}/photos"
+    
     resp = @connection.get url, {
       api_key: ENV['NASA_API_KEY'],
       earth_date: params[:earth_date],

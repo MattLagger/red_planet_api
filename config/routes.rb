@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :favorites
   # Rotas API NASA
   get '/rovers', to: 'rovers#index'
   get '/manifests/:rover', to: 'rovers#manifests'
-  get '/photos', to: 'rovers#photos'
+  post '/photos', to: 'rovers#photos'
 
   get '/auth/github', to: 'authentication#github', format: false
 
