@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_194335) do
+ActiveRecord::Schema.define(version: 2021_01_06_133033) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "image_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_01_05_194335) do
     t.string "camera_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "image_id"], name: "index_favorites_on_user_id_and_image_id", unique: true
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
