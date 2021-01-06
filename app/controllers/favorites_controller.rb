@@ -2,25 +2,22 @@
 
 class FavoritesController < ApplicationController
   before_action :set_favorite, only: %i[show update destroy]
+  before_action :authenticate_user!
 
   # GET /favorites
   def index
-    @favorites = Favorite.all
+    @favorites = Favorite.where(user_id: current_user.id)
 
     render json: @favorites
-  end
-
-  # GET /favorites/1
-  def show
-    render json: @favorite
   end
 
   # POST /favorites
   def create
     @favorite = Favorite.new(favorite_params)
+    @favorite[:user_id] = current_user.id
 
     if @favorite.save
-      render json: @favorite, status: :created, location: @favorite
+      render json: @favorite
     else
       render json: @favorite.errors, status: :unprocessable_entity
     end
@@ -29,6 +26,8 @@ class FavoritesController < ApplicationController
   # DELETE /favorites/1
   def destroy
     @favorite.destroy
+    @favorites = Favorite.where(user_id: current_user.id)
+    render json: @favorites
   end
 
   private
@@ -40,6 +39,6 @@ class FavoritesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def favorite_params
-    params.require(:favorite).permit(:image_id, :user_id, :image_url, :image_date, :rover_name, :camera_name)
+    params.require(:favorite).permit(:image_id, :image_url, :image_date, :rover_name, :camera_name)
   end
 end

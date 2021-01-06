@@ -5,7 +5,7 @@ module TokiToki
     payload = {
       iss: ENV['RED_PLANET_CLIENT_URL'],
       sub: sub,
-      exp: 4.hours.from_now.to_i,
+      exp: 72.hours.from_now.to_i,
       iat: Time.now.to_i
     }
     JWT.encode payload, ENV['JWT_SECRET'], 'HS256'
