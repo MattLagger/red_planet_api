@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Authenticator
   def initialize(connection = Faraday.new)
     @connection = connection

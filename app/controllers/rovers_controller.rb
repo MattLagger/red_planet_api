@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RoversController < ApplicationController
   before_action :authenticate_user!
 
@@ -10,15 +12,22 @@ class RoversController < ApplicationController
 
   def manifests
     rovers = NasaRovers.new
-    rovers_list = rovers.manifests(params[:rover])
+    rovers_list = rovers.manifests(rover_params[:rover])
 
     render json: rovers_list
   end
 
   def photos
     rovers = NasaRovers.new
-    rovers_list = rovers.photos(params)
 
-    render json: current_user
+    data = rovers.photos(rover_params)
+
+    render json: data
+  end
+
+  private
+
+  def rover_params
+    params.permit(:rover, :earth_date, :page)
   end
 end

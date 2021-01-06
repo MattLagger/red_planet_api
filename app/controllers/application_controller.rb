@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   def current_user
     return nil unless request.headers[:Authorization].present?
