@@ -1,24 +1,18 @@
-# README
+# Projet Red Planet Api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby 2.5.3
+## Rails 6.0.3.4
 
-Things you may want to cover:
+## Configurando Projeto
 
-* Ruby version
+Instalação de todas as gemas
+> bundle install
 
-* System dependencies
+Configura o figaro e cria o arquivo application.yml, utilize o example como base para configurar
+> bundle exec figaro install
 
-* Configuration
+Cria o banco de dados
+> rails db:create
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Roda todas as Migrations
+> rails db:migrate
