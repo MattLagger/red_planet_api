@@ -1,0 +1,13 @@
+CLIENT_ID: "CLIENT_ID DO GITHUB"
+CLIENT_SECRET: "CLIENT_SECRET DO GITHUB"
+JWT_SECRET: "CLIENT_SECRET"
+
+# Manter como está a menos que SPA rode em uma porta diferente do 3001
+GITHUB_ACCESS_TOKEN_URL: "https://github.com/login/oauth/access_token"
+GITHUB_USER_INFO_URL: "https://api.github.com/user"
+RED_PLANET_CLIENT_URL: "http://localhost:3001"
+
+NASA_API_KEY: "API KEY DA NASA"
+NASA_API_ID: "API ID DA NASA"
+NASA_API_URL: https://api.nasa.gov/mars-photos/api/v1 # Manter a mesma rota
+
